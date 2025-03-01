@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/palindrome-number/description/
+
 bool isPalindrome(int x) {
 
     char temp[20] = {0};
