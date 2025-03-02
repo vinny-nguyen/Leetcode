@@ -1,0 +1,39 @@
+// https://leetcode.com/problems/find-first-palindromic-string-in-the-array/
+bool checkPalindrome(char *temp) {
+    // consists of only lowercase english letters
+    int len = strlen(temp);
+
+    for (int i = 0; i < len; i++) {
+        if(temp[i] != temp[len - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+    }
+
+char* firstPalindrome(char** words, int wordsSize) { // **words: pointer to a pointer / word in array
+
+    // make a for loop, inside if the words[i] element is palindromic => return immediately
+
+    // after for loop do words[wordsSize] = '\0';
+
+    for (int n = 0; n < wordsSize; n++) {
+        if (checkPalindrome(words[n]) == true) {
+
+            int worlen = strlen(words[n]);
+            char *str_acc = malloc((worlen + 1) * sizeof(char));
+
+            if(!str_acc) { // str_acc == NULL
+                return "";
+            }
+
+            strcpy(str_acc, words[n]);
+            return str_acc;
+        }
+    }
+    char *empty = malloc(1);
+        if (empty) {
+            empty[0] = '\0';
+        } 
+    return empty;
+}
