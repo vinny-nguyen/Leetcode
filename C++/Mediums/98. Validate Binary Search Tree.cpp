@@ -15,6 +15,9 @@ class Solution {
 public:
 
     bool bstnode(TreeNode *root, long min, long max) {
+        // make sure to assert(root) on exam
+        
+        // NULL check for pointers on exam:
         if (root == NULL) {
             return true;
         }
