@@ -1,21 +1,23 @@
 // https://leetcode.com/problems/function-composition/
 
-/**
- * @param {Function[]} functions
- * @return {Function}
- */
-var compose = function(functions) {
-    if (functions.length == 0) {
-        return function(x) { return x; }
+// Function type:
+type F = (x: number) => number;
+
+// Composition function:
+function compose(functions: F[]): F {
+    var len = functions.length;
+    if (len == 0) {
+        return function(x) {
+            return x;
+        }
     }
     
     return function(x) {
-        var len = functions.length;
-        var result = functions[len - 1](x);
+        var vincent = functions[len - 1](x);
         for (var i = len - 2; i >= 0; --i) {
-            result = functions[i](result);
+            vincent = functions[i](vincent);
         }
-        return result;
+        return vincent;
     }
 };
 
